@@ -137,22 +137,14 @@ class LaravelDecoda {
     }
 
     /**
-     * Returns a full BBcode quote for this post.
+     * Returns a full BBcode quote for the stated $name and $content.
      *
+     * @param string $name
+     * @param string $content
      * @return string
      */
-    public function getQuoteAttribute()
+    public static function quote($name='',$content='')
     {
-        return '[quote='.$this->authorName.']'.$this->content.'[/quote]';
-    }
-
-    /**
-     * Returns the route to a reply to the current post (for usage with "Quote Reply").
-     *
-     * @return mixed
-     */
-    public function getReplyRouteAttribute()
-    {
-        return $this->getRoute('forum.get.reply.thread');
+        return '[quote='.$name.']'.$content.'[/quote]';
     }
 }
