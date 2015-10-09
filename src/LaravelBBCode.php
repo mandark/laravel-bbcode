@@ -1,6 +1,6 @@
 <?php
 
-namespace Mandark\Decoda;
+namespace Mandark\BBCode;
 
 use Decoda\Decoda;
 use Decoda\Filter\BlockFilter;
@@ -18,7 +18,7 @@ use Decoda\Hook\CensorHook;
 use Decoda\Hook\ClickableHook;
 use Decoda\Hook\EmoticonHook;
 
-class LaravelDecoda {
+class LaravelBBCode {
 
     /**
      * Runs $content through Decoda
@@ -42,88 +42,88 @@ class LaravelDecoda {
 
         // Add filter for default tags, if at least one is enabled.
         if (
-            config('laravel-decoda.bbcode.tags.b') ||
-            config('laravel-decoda.bbcode.tags.i') ||
-            config('laravel-decoda.bbcode.tags.u') ||
-            config('laravel-decoda.bbcode.tags.s') ||
-            config('laravel-decoda.bbcode.tags.sup') ||
-            config('laravel-decoda.bbcode.tags.sub')
+            config('bbcode.bbcode.tags.b') ||
+            config('bbcode.bbcode.tags.i') ||
+            config('bbcode.bbcode.tags.u') ||
+            config('bbcode.bbcode.tags.s') ||
+            config('bbcode.bbcode.tags.sup') ||
+            config('bbcode.bbcode.tags.sub')
         ) {
             $code->addFilter(new DefaultFilter());
         }
 
         // Add filter for block-quotes, if enabled.
-        if (config('laravel-decoda.bbcode.tags.quote')) {
+        if (config('bbcode.bbcode.tags.quote')) {
             $code->addFilter(new QuoteFilter());
         }
 
         // Add filter for image-tags, if enabled.
-        if (config('laravel-decoda.bbcode.tags.img') || config('laravel-decoda.emoticons.enabled')) {
+        if (config('bbcode.bbcode.tags.img') || config('bbcode.emoticons.enabled')) {
             $code->addFilter(new ImageFilter());
         }
 
         // Add filter for video-tags, if enabled.
-        if (config('laravel-decoda.bbcode.tags.video')) {
+        if (config('bbcode.bbcode.tags.video')) {
             $code->addFilter(new VideoFilter());
         }
 
         // Add filter for url-tags, if enabled.
-        if (config('laravel-decoda.bbcode.tags.url') || config('laravel-decoda.auto_links')) {
+        if (config('bbcode.bbcode.tags.url') || config('bbcode.auto_links')) {
             $code->addFilter(new UrlFilter());
         }
 
         // Add filter for list tags, if enabled.
         if (
-            config('laravel-decoda.bbcode.tags.list') ||
-            config('laravel-decoda.bbcode.tags.olist')
+            config('bbcode.bbcode.tags.list') ||
+            config('bbcode.bbcode.tags.olist')
         ) {
             $code->addFilter(new ListFilter());
         }
 
         // Add filter for font tags, if enabled.
         if (
-            config('laravel-decoda.bbcode.tags.font') ||
-            config('laravel-decoda.bbcode.tags.size') ||
-            config('laravel-decoda.bbcode.tags.color')
+            config('bbcode.bbcode.tags.font') ||
+            config('bbcode.bbcode.tags.size') ||
+            config('bbcode.bbcode.tags.color')
         ) {
             $code->addFilter(new TextFilter());
         }
 
         // Add filter for text-alignment.
         if (
-            config('laravel-decoda.bbcode.tags.left') ||
-            config('laravel-decoda.bbcode.tags.center') ||
-            config('laravel-decoda.bbcode.tags.right')
+            config('bbcode.bbcode.tags.left') ||
+            config('bbcode.bbcode.tags.center') ||
+            config('bbcode.bbcode.tags.right')
         ) {
             $code->addFilter(new BlockFilter());
         }
 
         // Add filter for block-quotes, if enabled.
-        if (config('laravel-decoda.bbcode.tags.code')) {
+        if (config('bbcode.bbcode.tags.code')) {
             $code->addFilter(new CodeFilter());
         }
 
         // Add filter for block-quotes, if enabled.
-        if (config('laravel-decoda.bbcode.tags.table')) {
+        if (config('bbcode.bbcode.tags.table')) {
             $code->addFilter(new TableFilter());
         }
 
         // Add hook for emoticons, if enabled.
-        if (config('laravel-decoda.emoticons.enabled')) {
-            $emoticonHook = new EmoticonHook(array('path' => config('laravel-decoda.emoticons.path')));
+        if (config('bbcode.emoticons.enabled')) {
+            $emoticonHook = new EmoticonHook(array('path' => config('bbcode.emoticons.path')));
             $emoticonHook->addLoader(new DecodaLaravelConfigLoader('laravel-decoda.emoticons.list'));
             $code->addHook($emoticonHook);
         }
 
         // Add hook for censorship, if enabled.
-        if (config('laravel-decoda.censorship.enabled')) {
+        if (config('bbcode.censorship.enabled')) {
             $censorshipHook = new CensorHook();
             $censorshipHook->addLoader(new DecodaLaravelConfigLoader('laravel-decoda.censorship.list'));
             $code->addHook($censorshipHook);
         }
 
         // Add hook to automatically convert URLs and emails (not wrapped in tags) into clickable links.
-        if (config('laravel-decoda.auto_links')) {
+        if (config('bbcode.auto_links')) {
             $code->addFilter(new EmailFilter());
             $code->addHook(new ClickableHook());
         }

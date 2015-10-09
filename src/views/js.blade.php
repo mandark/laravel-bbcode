@@ -1,41 +1,41 @@
-@if(config('laravel-decoda.bbcode.enabled'))
+@if(config('bbcode.bbcode.enabled'))
     <script src="{{asset('vendor/mandark/laravel-decoda/js/wysibb/jquery.wysibb.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             var wbbOpt = {
                 buttons: "{{
-                    (config('laravel-decoda.bbcode.tags.b')?'bold,':'').
-                    (config('laravel-decoda.bbcode.tags.i')?'italic,':'').
-                    (config('laravel-decoda.bbcode.tags.u')?'underline,':'').
-                    (config('laravel-decoda.bbcode.tags.s')?'strike,':'').
-                    (config('laravel-decoda.bbcode.tags.sup')?'sup,':'').
-                    (config('laravel-decoda.bbcode.tags.sub')?'sub,':'')
+                    (config('bbcode.bbcode.tags.b')?'bold,':'').
+                    (config('bbcode.bbcode.tags.i')?'italic,':'').
+                    (config('bbcode.bbcode.tags.u')?'underline,':'').
+                    (config('bbcode.bbcode.tags.s')?'strike,':'').
+                    (config('bbcode.bbcode.tags.sup')?'sup,':'').
+                    (config('bbcode.bbcode.tags.sub')?'sub,':'')
                 }},|,{{
-                    (config('laravel-decoda.bbcode.tags.img')?'img,':'').
-                    (config('laravel-decoda.bbcode.tags.video')?'video,':'').
-                    (config('laravel-decoda.bbcode.tags.url')?'link,':'')
+                    (config('bbcode.bbcode.tags.img')?'img,':'').
+                    (config('bbcode.bbcode.tags.video')?'video,':'').
+                    (config('bbcode.bbcode.tags.url')?'link,':'')
                 }},|,{{
-                    (config('laravel-decoda.bbcode.tags.list')?'bullist,':'').
-                    (config('laravel-decoda.bbcode.tags.olist')?'numlist,':'')
+                    (config('bbcode.bbcode.tags.list')?'bullist,':'').
+                    (config('bbcode.bbcode.tags.olist')?'numlist,':'')
                 }},|,{{
-                    (config('laravel-decoda.bbcode.tags.font')?'fontfamily,':'').
-                    (config('laravel-decoda.bbcode.tags.size')?'fontsize,':'').
-                    (config('laravel-decoda.bbcode.tags.color')?'fontcolor,':'')
+                    (config('bbcode.bbcode.tags.font')?'fontfamily,':'').
+                    (config('bbcode.bbcode.tags.size')?'fontsize,':'').
+                    (config('bbcode.bbcode.tags.color')?'fontcolor,':'')
                 }},|,{{
-                    (config('laravel-decoda.bbcode.tags.left')?'justifyleft,':'').
-                    (config('laravel-decoda.bbcode.tags.center')?'justifycenter,':'').
-                    (config('laravel-decoda.bbcode.tags.right')?'justifyright,':'')
+                    (config('bbcode.bbcode.tags.left')?'justifyleft,':'').
+                    (config('bbcode.bbcode.tags.center')?'justifycenter,':'').
+                    (config('bbcode.bbcode.tags.right')?'justifyright,':'')
                 }},|,{{
-                    (config('laravel-decoda.bbcode.tags.quote')?'quote,':'').
-                    (config('laravel-decoda.bbcode.tags.code')?'code,':'').
-                    (config('laravel-decoda.bbcode.tags.table')?'table,':'')
+                    (config('bbcode.bbcode.tags.quote')?'quote,':'').
+                    (config('bbcode.bbcode.tags.code')?'code,':'').
+                    (config('bbcode.bbcode.tags.table')?'table,':'')
                 }},|,{{
-                    (config('laravel-decoda.emoticons.enabled')?'smilebox,':'')
+                    (config('bbcode.emoticons.enabled')?'smilebox,':'')
                 }},|,removeFormat",
                 smileList:
                         [
-                            @foreach(config('laravel-decoda.emoticons.list') as $name => $smileys)
-                                {title:CURLANG.{{$name}}, img: '<img src="{{asset(config('laravel-decoda.emoticons.path').$name.'.png')}}" class="sm">', bbcode:" :{{$name}}: "},
+                            @foreach(config('bbcode.emoticons.list') as $name => $smileys)
+                                {title:CURLANG.{{$name}}, img: '<img src="{{asset(config('bbcode.emoticons.path').$name.'.png')}}" class="sm">', bbcode:" :{{$name}}: "},
                             @endforeach
                         ],
                 allButtons: {
@@ -88,10 +88,10 @@
             };
             $("[data-add-wysibb]").wysibb(wbbOpt)
 
-            $('a[data-decodaquickquote]').click(function(event) {
+            $('a[data-bbcodequickquote]').click(function(event) {
                 var idTextarea = $(this).attr('href');
                 var jqTextarea = $(idTextarea);
-                var idQuote = $(this).data('decodaquickquote');
+                var idQuote = $(this).data('bbcodequickquote');
                 var quote = $(idQuote).html().trim();
                 $('html,body').animate({scrollTop: jqTextarea.parent().offset().top});
                 jqTextarea.insertAtCursor(quote,true)

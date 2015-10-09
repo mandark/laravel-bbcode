@@ -1,5 +1,5 @@
 <?php
-namespace Mandark\Decoda;
+namespace Mandark\BBCode;
 
 use Decoda\Engine\AbstractEngine;
 

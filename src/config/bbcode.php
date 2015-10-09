@@ -66,7 +66,7 @@ return [
         'enabled' => true,
 
         // The path to the folder containing the emoticon-images (incl. trailing slash).
-        'path' => '/vendor/mandark/laravel-decoda/img/emoticons/',
+        'path' => '/vendor/mandark/bbcode/img/emoticons/',
 
         // Mapping of emoticons to a list of smilies that represents it.
         // The smiley will be replaced with an image that uses the emoticon name.

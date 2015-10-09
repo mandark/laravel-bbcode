@@ -1,5 +1,5 @@
 {
-    "name": "mandark/laravel-decoda",
+    "name": "mandark/bbcode",
     "authors": [
         {
             "name": "Gerald Buttinger",
@@ -12,7 +12,7 @@
 	},
     "autoload": {
         "psr-4": {
-            "Mandark\\Decoda\\": "src/"
+            "Mandark\\BBCode\\": "src/"
         }
     }
 }
