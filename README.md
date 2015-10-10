@@ -1,2 +1,2 @@
-# laravel-decoda
-Integration of Decoda BBCode-parser into Laravel 5.1
+# laravel-bbcode
+Integration of the BBCode-parser "decoda" and the BBCode-editor "WysiBB" into Laravel 5.1

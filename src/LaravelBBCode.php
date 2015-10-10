@@ -42,83 +42,83 @@ class LaravelBBCode {
 
         // Add filter for default tags, if at least one is enabled.
         if (
-            config('bbcode.bbcode.tags.b') ||
-            config('bbcode.bbcode.tags.i') ||
-            config('bbcode.bbcode.tags.u') ||
-            config('bbcode.bbcode.tags.s') ||
-            config('bbcode.bbcode.tags.sup') ||
-            config('bbcode.bbcode.tags.sub')
+            config('bbcode.tags.b') ||
+            config('bbcode.tags.i') ||
+            config('bbcode.tags.u') ||
+            config('bbcode.tags.s') ||
+            config('bbcode.tags.sup') ||
+            config('bbcode.tags.sub')
         ) {
             $code->addFilter(new DefaultFilter());
         }
 
         // Add filter for block-quotes, if enabled.
-        if (config('bbcode.bbcode.tags.quote')) {
+        if (config('bbcode.tags.quote')) {
             $code->addFilter(new QuoteFilter());
         }
 
         // Add filter for image-tags, if enabled.
-        if (config('bbcode.bbcode.tags.img') || config('bbcode.emoticons.enabled')) {
+        if (config('bbcode.tags.img') || config('bbcode.emoticons.enabled')) {
             $code->addFilter(new ImageFilter());
         }
 
         // Add filter for video-tags, if enabled.
-        if (config('bbcode.bbcode.tags.video')) {
+        if (config('bbcode.tags.video')) {
             $code->addFilter(new VideoFilter());
         }
 
         // Add filter for url-tags, if enabled.
-        if (config('bbcode.bbcode.tags.url') || config('bbcode.auto_links')) {
+        if (config('bbcode.tags.url') || config('bbcode.auto_links')) {
             $code->addFilter(new UrlFilter());
         }
 
         // Add filter for list tags, if enabled.
         if (
-            config('bbcode.bbcode.tags.list') ||
-            config('bbcode.bbcode.tags.olist')
+            config('bbcode.tags.list') ||
+            config('bbcode.tags.olist')
         ) {
             $code->addFilter(new ListFilter());
         }
 
         // Add filter for font tags, if enabled.
         if (
-            config('bbcode.bbcode.tags.font') ||
-            config('bbcode.bbcode.tags.size') ||
-            config('bbcode.bbcode.tags.color')
+            config('bbcode.tags.font') ||
+            config('bbcode.tags.size') ||
+            config('bbcode.tags.color')
         ) {
             $code->addFilter(new TextFilter());
         }
 
         // Add filter for text-alignment.
         if (
-            config('bbcode.bbcode.tags.left') ||
-            config('bbcode.bbcode.tags.center') ||
-            config('bbcode.bbcode.tags.right')
+            config('bbcode.tags.left') ||
+            config('bbcode.tags.center') ||
+            config('bbcode.tags.right')
         ) {
             $code->addFilter(new BlockFilter());
         }
 
         // Add filter for block-quotes, if enabled.
-        if (config('bbcode.bbcode.tags.code')) {
+        if (config('bbcode.tags.code')) {
             $code->addFilter(new CodeFilter());
         }
 
         // Add filter for block-quotes, if enabled.
-        if (config('bbcode.bbcode.tags.table')) {
+        if (config('bbcode.tags.table')) {
             $code->addFilter(new TableFilter());
         }
 
         // Add hook for emoticons, if enabled.
         if (config('bbcode.emoticons.enabled')) {
             $emoticonHook = new EmoticonHook(array('path' => config('bbcode.emoticons.path')));
-            $emoticonHook->addLoader(new DecodaLaravelConfigLoader('laravel-decoda.emoticons.list'));
+            $emoticonHook->addLoader(new DecodaLaravelConfigLoader('bbcode.emoticons.list'));
             $code->addHook($emoticonHook);
         }
 
         // Add hook for censorship, if enabled.
         if (config('bbcode.censorship.enabled')) {
             $censorshipHook = new CensorHook();
-            $censorshipHook->addLoader(new DecodaLaravelConfigLoader('laravel-decoda.censorship.list'));
+            $censorshipHook->addLoader(new DecodaLaravelConfigLoader('bbcode.censorship.list'));
             $code->addHook($censorshipHook);
         }
 

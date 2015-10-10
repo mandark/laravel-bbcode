@@ -19,6 +19,6 @@ class DecodaBladeEngine extends AbstractEngine
         $attributes = $tag['attributes'];
         $attributes['content'] = $content;
 
-        return view('laravel-decoda::'.$setup['template'])->with($attributes)->render();
+        return view('bbcode::'.$setup['template'])->with($attributes)->render();
     }
 }

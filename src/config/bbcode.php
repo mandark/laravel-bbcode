@@ -4,54 +4,44 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | BBcode-settings
+    | Tags-settings
     |--------------------------------------------------------------------------
+    | Enable or disable the allowed BBcode-tags
     */
 
-    'bbcode' => [
+    'tags'  => [
 
-        // Enable the WysiBB-editor on create-post-forms and proper decoding of BBCODE.
-        'enabled' => true,
+        // Basic tags
+        'b'     => true,    // Bold
+        'i'     => true,    // Italics
+        'u'     => true,    // Underline
+        's'     => true,    // Strike through
+        'sup'   => true,    // Super-script
+        'sub'   => true,    // Sub-script
 
-        // Enable or disable the allowed BBcode-tags
-        'tags'  => [
+        // Links and embeddings
+        'img'   => true,    // Image
+        'video' => true,    // Video
+        'url'   => true,    // Url
 
-            // Basic tags
-            'b'     => true,    // Bold
-            'i'     => true,    // Italics
-            'u'     => true,    // Underline
-            's'     => true,    // Strike through
-            'sup'   => true,    // Super-script
-            'sub'   => true,    // Sub-script
+        // Lists
+        'list'  => true,    // Unordered bullet list
+        'olist' => true,    // Ordered numeric list
 
-            // Links and embeddings
-            'img'   => true,    // Image
-            'video' => true,    // Video
-            'url'   => true,    // Url
+        // Fonts
+        'font'  => true,    // Font family
+        'size'  => true,    // Font size
+        'color' => true,    // Font color
 
-            // Lists
-            'list'  => true,    // Unordered bullet list
-            'olist' => true,    // Ordered numeric list
+        // Text alignment
+        'left'  => true,    // Align left
+        'center'=> true,    // Align center
+        'right' => true,    // Align right
 
-            // Fonts
-            'font'  => true,    // Font family
-            'size'  => true,    // Font size
-            'color' => true,    // Font color
-
-            // Text alignment
-            'left'  => true,    // Align left
-            'center'=> true,    // Align center
-            'right' => true,    // Align right
-
-            // Misc tags
-            'quote' => true,    // Blockquotes
-            'code'  => true,    // Code blocks
-            'table' => true,    // Tables
-        ],
-
-        // Set desired width and height of videos.
-        'video_width'   => '320',
-        'video_height'  => '240',
+        // Misc tags
+        'quote' => true,    // Blockquotes
+        'code'  => true,    // Code blocks
+        'table' => true,    // Tables
     ],
 
     /*
@@ -152,6 +142,10 @@ return [
     | Misc settings
     |--------------------------------------------------------------------------
     */
+
+    // Set desired width and height of videos.
+    'video_width'   => '320',
+    'video_height'  => '240',
 
     // Convert URLs and emails (not wrapped in tags) into clickable links.
     'auto_links' => true,

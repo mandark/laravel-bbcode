@@ -14,7 +14,7 @@ class LaravelBBCodeServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        // Publish config
+        // Publish config.
         $this->publishes([
             __DIR__.'/config/bbcode.php' => config_path('bbcode.php'),
         ], 'config');
@@ -24,14 +24,21 @@ class LaravelBBCodeServiceProvider extends ServiceProvider
             __DIR__.'/public/' => public_path('vendor/mandark/bbcode'),
         ], 'public');
 
-        // Publish views
+        // Publish views.
         $this->publishes([
             __DIR__.'/views/' => base_path('/resources/views/vendor/bbcode')
         ], 'views');
 
-        // Load views
+        // Load views.
         $this->loadViewsFrom(__DIR__.'/views', 'bbcode');
 
+        // Publish translations.
+        $this->publishes([
+            __DIR__.'/translations/' => base_path('/resources/lang/vendor/bbcode')
+        ], 'lang');
+
+        // Load translations
+        $this->loadTranslationsFrom(__DIR__.'/translations', 'bbcode');
     }
 
     /**
