@@ -1,4 +1,4 @@
-<script src="{{asset('vendor/mandark/bbcode/js/wysibb/jquery.wysibb.min.js')}}"></script>
+<script src="{{asset('vendor/mandark/bbcode/js/wysibb/jquery.wysibb.js')}}"></script>
 <script>
     $(document).ready(function() {
         var wbbOpt = {
@@ -85,7 +85,7 @@
                 },
             }
         };
-        $("[data-add-wysibb]").wysibb(wbbOpt)
+        $("[data-add-wysibb]").wysibb(wbbOpt).prop("disabled",true);
 
 
         $('a[data-bbcodequickquote]').click(function(event) {
@@ -97,11 +97,10 @@
             jqTextarea.insertAtCursor(quote,true)
         });
 
-        $("[data-add-wysibb]").closest('form').find('[type="submit"]').click(function( event ) {
+        $("[data-add-wysibb]").closest('form').submit(function( event ) {
 
             $(this).closest('form').find('[data-add-wysibb]').each(function( index ) {
-                var content = $(this).siblings('.wysibb-body').text();
-                $(this).val(content);
+                $(this).prop('disabled',false);
             });
 
         });
