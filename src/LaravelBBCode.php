@@ -29,9 +29,6 @@ class LaravelBBCode {
      */
     public static function decode($content='')
     {
-        // First make sure, the content is HTML entities encoded.
-        $content = e($content);
-
         // Instantiate the Decoda-object.
         // We use null as the configPath to keep Decoda from using
         // it's built in (emoticon- and censorship-configs),
